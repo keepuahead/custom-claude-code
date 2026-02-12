@@ -1,6 +1,5 @@
 # 🚀 Free Claude Code - Easiest Way to Use Claude Code with ANY API
 
-[![npm version](https://badge.fury.io/js/@keepuahead/free-claude-code.svg)](https://badge.fury.io/js/@keepuahead/free-claude-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![One-Line Install](https://img.shields.io/badge/install-one%20line-brightgreen)](https://github.com/keepuahead/custom-claude-code)
 
@@ -10,22 +9,29 @@
 
 ## 🎯 One-Line Installation
 
-### Windows (PowerShell)
+### Windows (PowerShell) - Run as Administrator
 
 ```powershell
-irm https://raw.githubusercontent.com/keepuahead/custom-claude-code/main/install.ps1 | iex
+npm install -g @anthropic-ai/claude-code@2.0.64 && npm install -g github:keepuahead/custom-claude-code && fcc start
 ```
 
 ### Mac/Linux
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/keepuahead/custom-claude-code/main/install.sh | bash
+npm install -g @anthropic-ai/claude-code@2.0.64 && npm install -g github:keepuahead/custom-claude-code && fcc start
 ```
 
-### Manual Install (Any OS)
+### Or Install from Source
 
 ```bash
-npm install -g @anthropic-ai/claude-code@2.0.64 @keepuahead/free-claude-code && fcc start
+# Clone and install
+git clone https://github.com/keepuahead/custom-claude-code.git
+cd custom-claude-code
+pnpm install && pnpm build
+npm link
+
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code@2.0.64
 ```
 
 ---
@@ -34,7 +40,10 @@ npm install -g @anthropic-ai/claude-code@2.0.64 @keepuahead/free-claude-code && 
 
 ### Step 1: Create Config File
 
-Create `~/.free-claude-code/config.json` (Windows: `C:\Users\YOUR_NAME\.free-claude-code\config.json`):
+Create `~/.free-claude-code/config.json`:
+
+**Windows:** `C:\Users\YOUR_NAME\.free-claude-code\config.json`
+**Mac/Linux:** `~/.free-claude-code/config.json`
 
 ```json
 {
@@ -188,7 +197,7 @@ fcc code
 <details>
 <summary><b>Why do I need Claude Code v2.0.64?</b></summary>
 
-Claude Code v2.0.64 has the best compatibility with custom API routers. Newer versions may have issues. The install script handles this automatically.
+Claude Code v2.0.64 has the best compatibility with custom API routers. Newer versions may have issues.
 </details>
 
 <details>
@@ -263,10 +272,6 @@ MIT License - Use freely!
 ---
 
 <div align="center">
-
-### ⭐ Star us on GitHub!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=keepuahead/custom-claude-code&type=Date)](https://github.com/keepuahead/custom-claude-code/stargazers)
 
 **Made with ❤️ by [keepuahead](https://github.com/keepuahead)**
 
