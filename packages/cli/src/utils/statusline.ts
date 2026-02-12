@@ -432,7 +432,7 @@ async function getTokenSpeedStats(sessionId: string): Promise<{
 } | null> {
     try {
         // Use system temp directory
-        const tempDir = path.join(tmpdir(), 'claude-code-router');
+        const tempDir = path.join(tmpdir(), 'free-claude-code');
 
         // Check if temp directory exists
         try {
@@ -677,7 +677,7 @@ export async function parseStatusLineData(input: StatusLineInput, presetName?: s
         if (!model) {
             try {
                 // Get project configuration file path
-                const projectConfigPath = path.join(workDir, ".claude-code-router", "config.json");
+                const projectConfigPath = path.join(workDir, ".free-claude-code", "config.json");
                 let configPath = projectConfigPath;
 
                 // Check if project configuration file exists, if not use user home directory configuration file

@@ -128,7 +128,7 @@ export const createServer = async (config: any): Promise<any> => {
   // Get log file list endpoint
   app.get("/api/logs/files", async (req: any, reply: any) => {
     try {
-      const logDir = join(homedir(), ".claude-code-router", "logs");
+      const logDir = join(homedir(), ".free-claude-code", "logs");
       const logFiles: Array<{ name: string; path: string; size: number; lastModified: string }> = [];
 
       if (existsSync(logDir)) {
@@ -170,7 +170,7 @@ export const createServer = async (config: any): Promise<any> => {
         logFilePath = filePath;
       } else {
         // If file path is not specified, use default log file path
-        logFilePath = join(homedir(), ".claude-code-router", "logs", "app.log");
+        logFilePath = join(homedir(), ".free-claude-code", "logs", "app.log");
       }
 
       if (!existsSync(logFilePath)) {
@@ -198,7 +198,7 @@ export const createServer = async (config: any): Promise<any> => {
         logFilePath = filePath;
       } else {
         // If file path is not specified, use default log file path
-        logFilePath = join(homedir(), ".claude-code-router", "logs", "app.log");
+        logFilePath = join(homedir(), ".free-claude-code", "logs", "app.log");
       }
 
       if (existsSync(logFilePath)) {

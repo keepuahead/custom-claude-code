@@ -79,7 +79,7 @@ export async function installPresetFromMarket(presetName: string): Promise<{ nam
   if (!marketPreset) {
     throw new Error(
       `Preset '${presetName}' not found in marketplace. ` +
-      `Please check the available presets at: https://github.com/claude-code-router/presets`
+      `Please check the available presets at: https://github.com/free-claude-code/presets`
     );
   }
 
@@ -105,8 +105,8 @@ export async function installPresetFromMarket(presetName: string): Promise<{ nam
   if (await isPresetInstalled(installedPresetName)) {
     throw new Error(
       `Preset '${installedPresetName}' is already installed.\n` +
-      `To delete and reinstall, use: ccr preset delete ${installedPresetName}\n` +
-      `To reconfigure without deleting, use: ccr preset install ${installedPresetName}`
+      `To delete and reinstall, use: fcc preset delete ${installedPresetName}\n` +
+      `To reconfigure without deleting, use: fcc preset install ${installedPresetName}`
     );
   }
 

@@ -34,7 +34,7 @@ export class HuggingFaceTokenizer implements ITokenizer {
     this.modelId = modelId;
     this.logger = logger;
     this.options = options;
-    this.cacheDir = options.cacheDir || join(homedir(), ".claude-code-router", ".huggingface");
+    this.cacheDir = options.cacheDir || join(homedir(), ".free-claude-code", ".huggingface");
     // Cache safe model name to avoid repeated regex operations
     this.safeModelName = modelId.replace(/\//g, "_").replace(/[^a-zA-Z0-9_-]/g, "_");
     this.name = `huggingface-${modelId.split("/").pop()}`;
