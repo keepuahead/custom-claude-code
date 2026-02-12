@@ -1,0 +1,35 @@
+{
+  "name": "@free-claude-code/cli",
+  "version": "1.0.0",
+  "description": "CLI for Free Claude Code - Use Claude Code with any AI provider",
+  "bin": {
+    "fcc": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-cli.js",
+    "dev": "ts-node src/cli.ts"
+  },
+  "keywords": [
+    "claude-code",
+    "free-claude",
+    "cli",
+    "ai-code-assistant"
+  ],
+  "author": "keepuahead",
+  "license": "MIT",
+  "devDependencies": {
+    "@free-claude-code/server": "workspace:*",
+    "@free-claude-code/shared": "workspace:*",
+    "@inquirer/prompts": "^5.0.0",
+    "@types/archiver": "^7.0.0",
+    "@types/node": "^24.0.15",
+    "adm-zip": "^0.5.16",
+    "archiver": "^7.0.1",
+    "esbuild": "^0.25.1",
+    "find-process": "^2.0.0",
+    "minimist": "^1.2.8",
+    "openurl": "^1.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,32 @@
+node_modules
+.env
+log.txt
+.idea
+dist
+.DS_Store
+.vscode
+tsconfig.tsbuildinfo
+
+# Documentation build output
+docs/build
+docs/.docusaurus
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage
+
+# Build outputs
+*.tsbuildinfo
+
+# OS files
+Thumbs.db

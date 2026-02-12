@@ -1,0 +1,40 @@
+{
+  "name": "openrouter",
+  "version": "1.0.0",
+  "description": "OpenRouter - Access all major AI models through one API",
+  "author": "keepuahead",
+  "keywords": ["openrouter", "multi-model", "claude", "gemini", "llama"],
+  "homepage": "https://openrouter.ai",
+  "Providers": [
+    {
+      "name": "openrouter",
+      "api_base_url": "https://openrouter.ai/api/v1/chat/completions",
+      "api_key": "{{apiKey}}",
+      "models": [
+        "anthropic/claude-sonnet-4",
+        "anthropic/claude-3.5-sonnet",
+        "anthropic/claude-opus-4",
+        "google/gemini-2.5-pro-preview",
+        "deepseek/deepseek-chat",
+        "meta-llama/llama-3.3-70b-instruct"
+      ],
+      "transformer": {
+        "use": ["openrouter"]
+      }
+    }
+  ],
+  "Router": {
+    "default": "openrouter,anthropic/claude-sonnet-4",
+    "think": "openrouter,anthropic/claude-opus-4",
+    "longContext": "openrouter,google/gemini-2.5-pro-preview"
+  },
+  "schema": [
+    {
+      "id": "apiKey",
+      "type": "password",
+      "label": "OpenRouter API Key",
+      "prompt": "Enter your OpenRouter API key",
+      "required": true
+    }
+  ]
+}

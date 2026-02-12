@@ -1,0 +1,35 @@
+{
+  "name": "deepseek",
+  "version": "1.0.0",
+  "description": "DeepSeek - Affordable AI with excellent coding capabilities",
+  "author": "keepuahead",
+  "keywords": ["deepseek", "coding", "budget", "reasoning"],
+  "homepage": "https://deepseek.com",
+  "Providers": [
+    {
+      "name": "deepseek",
+      "api_base_url": "https://api.deepseek.com/chat/completions",
+      "api_key": "{{apiKey}}",
+      "models": ["deepseek-chat", "deepseek-reasoner"],
+      "transformer": {
+        "use": ["deepseek"],
+        "deepseek-chat": {
+          "use": ["tooluse"]
+        }
+      }
+    }
+  ],
+  "Router": {
+    "default": "deepseek,deepseek-chat",
+    "think": "deepseek,deepseek-reasoner"
+  },
+  "schema": [
+    {
+      "id": "apiKey",
+      "type": "password",
+      "label": "DeepSeek API Key",
+      "prompt": "Enter your DeepSeek API key",
+      "required": true
+    }
+  ]
+}

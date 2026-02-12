@@ -1,0 +1,33 @@
+{
+  "name": "gemini",
+  "version": "1.0.0",
+  "description": "Google Gemini - Powerful multimodal AI with long context",
+  "author": "keepuahead",
+  "keywords": ["gemini", "google", "multimodal", "long-context"],
+  "homepage": "https://ai.google.dev",
+  "Providers": [
+    {
+      "name": "gemini",
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
+      "api_key": "{{apiKey}}",
+      "models": ["gemini-2.5-flash", "gemini-2.5-pro"],
+      "transformer": {
+        "use": ["gemini"]
+      }
+    }
+  ],
+  "Router": {
+    "default": "gemini,gemini-2.5-flash",
+    "think": "gemini,gemini-2.5-pro",
+    "longContext": "gemini,gemini-2.5-pro"
+  },
+  "schema": [
+    {
+      "id": "apiKey",
+      "type": "password",
+      "label": "Google Gemini API Key",
+      "prompt": "Enter your Google Gemini API key",
+      "required": true
+    }
+  ]
+}

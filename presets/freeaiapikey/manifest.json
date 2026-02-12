@@ -1,0 +1,30 @@
+{
+  "name": "freeaiapikey",
+  "version": "1.0.0",
+  "description": "FreeAIAPIKey.com - Access GPT-5, Claude, Gemini & more at 80% off! Get $2 FREE credit.",
+  "author": "keepuahead",
+  "keywords": ["freeaiapikey", "gpt-5", "claude", "gemini", "budget", "cheap"],
+  "homepage": "https://freeaiapikey.com",
+  "Providers": [
+    {
+      "name": "freeaiapikey",
+      "api_base_url": "https://freeaiapikey.com/v1/chat/completions",
+      "api_key": "{{apiKey}}",
+      "models": ["gpt-5", "claude-opus-4.5", "claude-sonnet-4.5", "gemini-3", "deepseek-v3.2", "kimi-k2.5"]
+    }
+  ],
+  "Router": {
+    "default": "freeaiapikey,gpt-5",
+    "think": "freeaiapikey,claude-sonnet-4.5",
+    "longContext": "freeaiapikey,gemini-3"
+  },
+  "schema": [
+    {
+      "id": "apiKey",
+      "type": "password",
+      "label": "FreeAIAPIKey API Key",
+      "prompt": "Enter your FreeAIAPIKey API key (get $2 free at freeaiapikey.com)",
+      "required": true
+    }
+  ]
+}

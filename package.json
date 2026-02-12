@@ -1,0 +1,69 @@
+{
+  "name": "@keepuahead/free-claude-code",
+  "version": "1.0.0",
+  "description": "Use Claude Code with ANY AI provider - OpenRouter, DeepSeek, Gemini, OpenAI, Custom APIs. Easiest setup, 80% cost savings, works in minutes!",
+  "scripts": {
+    "build": "pnpm build:shared && pnpm build:core && pnpm build:server && pnpm build:cli && pnpm build:ui",
+    "build:core": "pnpm --filter @free-claude-code/core build",
+    "build:shared": "pnpm --filter @free-claude-code/shared build",
+    "build:cli": "pnpm --filter @free-claude-code/cli build",
+    "build:server": "pnpm --filter @free-claude-code/server build",
+    "build:ui": "pnpm --filter @free-claude-code/ui build",
+    "release": "pnpm build && bash scripts/release.sh all",
+    "release:npm": "bash scripts/release.sh npm",
+    "dev:cli": "pnpm --filter @free-claude-code/cli dev",
+    "dev:server": "pnpm --filter @free-claude-code/server dev",
+    "dev:ui": "pnpm --filter @free-claude-code/ui dev",
+    "dev:core": "pnpm --filter @free-claude-code/core dev"
+  },
+  "bin": {
+    "fcc": "dist/cli.js"
+  },
+  "keywords": [
+    "claude-code",
+    "free-claude",
+    "claude-code-router",
+    "openai-compatible",
+    "deepseek",
+    "openrouter",
+    "gemini",
+    "anthropic-alternative",
+    "ai-code-assistant",
+    "cheap-ai-api",
+    "claude-code-free",
+    "claude-without-anthropic",
+    "llm-router",
+    "ai-api-gateway",
+    "gpt-5",
+    "claude-opus",
+    "claude-sonnet",
+    "free-ai-api",
+    "budget-ai",
+    "ai-for-developers"
+  ],
+  "author": "keepuahead",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keepuahead/custom-claude-code.git"
+  },
+  "homepage": "https://github.com/keepuahead/custom-claude-code#readme",
+  "bugs": {
+    "url": "https://github.com/keepuahead/custom-claude-code/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.15",
+    "esbuild": "^0.25.1",
+    "shx": "^0.4.0",
+    "typescript": "^5.8.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "18"
+    }
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
