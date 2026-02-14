@@ -184,6 +184,7 @@ async function main() {
         const startProcess = spawn("node", [cliPath, "start"], {
           detached: true,
           stdio: "ignore",
+          cwd: dirname(cliPath)
         });
 
         startProcess.on("error", (error) => {
@@ -292,6 +293,7 @@ async function main() {
         const startProcess = spawn("node", [cliPath, "start"], {
           detached: true,
           stdio: "ignore",
+          cwd: dirname(cliPath)
         });
 
         startProcess.on("error", (error) => {
@@ -323,6 +325,7 @@ async function main() {
         const startProcess = spawn("node", [cliPath, "start"], {
           detached: true,
           stdio: "ignore",
+          cwd: dirname(cliPath)
         });
 
         startProcess.on("error", (error) => {
@@ -372,6 +375,7 @@ async function main() {
             const restartProcess = spawn("node", [cliPath, "start"], {
               detached: true,
               stdio: "ignore",
+              cwd: dirname(cliPath)
             });
 
             restartProcess.on("error", (error) => {

@@ -250,6 +250,7 @@ export const restartService = async () => {
   const startProcess = spawn("node", [CLI_PATH, "start"], {
     detached: true,
     stdio: "ignore",
+    cwd: path.dirname(CLI_PATH)
   });
 
   startProcess.on("error", (error) => {
