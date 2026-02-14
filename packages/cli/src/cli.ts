@@ -14,10 +14,19 @@ import { version } from "../package.json";
 import { spawn, exec } from "child_process";
 import {getPresetDir, loadConfigFromManifest, PID_FILE, readPresetFile, REFERENCE_COUNT_FILE} from "@free-claude-code/shared";
 import fs, { existsSync, readFileSync } from "fs";
-import { join } from "path";
+import { join, dirname, resolve, isAbsolute } from "path";
 import { parseStatusLineData, StatusLineInput } from "./utils/statusline";
 import {handlePresetCommand} from "./utils/preset";
 import { handleInstallCommand } from "./utils/installCommand";
+
+// Store the absolute CLI path at startup (before any cwd changes)
+const CLI_PATH = (() => {
+  const scriptPath = process.argv[1];
+  if (scriptPath) {
+    return isAbsolute(scriptPath) ? scriptPath : resolve(process.cwd(), scriptPath);
+  }
+  return resolve(__dirname, "cli.js");
+})();
 
 
 const command = process.argv[2];
@@ -171,7 +180,7 @@ async function main() {
 
       if (shouldStartServer && !isRunning) {
         console.log("Service not running, starting service...");
-        const cliPath = join(__dirname, "cli.js");
+        const cliPath = CLI_PATH;
         const startProcess = spawn("node", [cliPath, "start"], {
           detached: true,
           stdio: "ignore",
@@ -279,7 +288,7 @@ async function main() {
     case "code":
       if (!isRunning) {
         console.log("Service not running, starting service...");
-        const cliPath = join(__dirname, "cli.js");
+        const cliPath = CLI_PATH;
         const startProcess = spawn("node", [cliPath, "start"], {
           detached: true,
           stdio: "ignore",
@@ -310,7 +319,7 @@ async function main() {
       // Check if service is running
       if (!isRunning) {
         console.log("Service not running, starting service...");
-        const cliPath = join(__dirname, "cli.js");
+        const cliPath = CLI_PATH;
         const startProcess = spawn("node", [cliPath, "start"], {
           detached: true,
           stdio: "ignore",

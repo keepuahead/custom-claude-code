@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import readline from "node:readline";
 import JSON5 from "json5";
-import path from "node:path";
+import path, { join, resolve, isAbsolute } from "node:path";
 import { createHash } from "node:crypto";
 import os from "node:os";
 import {
@@ -18,6 +18,15 @@ import { checkForUpdates, performUpdate } from "./update";
 import { version } from "../../package.json";
 import { spawn } from "child_process";
 import {cleanupPidFile, isServiceRunning} from "./processCheck";
+
+// Store the absolute CLI path at startup (before any cwd changes)
+const CLI_PATH = (() => {
+  const scriptPath = process.argv[1];
+  if (scriptPath) {
+    return isAbsolute(scriptPath) ? scriptPath : resolve(process.cwd(), scriptPath);
+  }
+  return path.resolve(__dirname, "cli.js");
+})();
 
 // Function to interpolate environment variables in config values
 const interpolateEnvVars = (obj: any): any => {
@@ -204,7 +213,7 @@ export const run = async (args: string[] = []) => {
 
   app.post("/api/restart", async () => {
     setTimeout(async () => {
-      spawn("ccr", ["restart"], {
+      spawn("fcc", ["restart"], {
         detached: true,
         stdio: "ignore",
       }).unref();
@@ -237,9 +246,8 @@ export const restartService = async () => {
   }
 
   // Start the service again in the background
-  console.log("Starting claude code router service...");
-  const cliPath = path.join(__dirname, "cli.js");
-  const startProcess = spawn("node", [cliPath, "start"], {
+  console.log("Starting free-claude-code router service...");
+  const startProcess = spawn("node", [CLI_PATH, "start"], {
     detached: true,
     stdio: "ignore",
   });
