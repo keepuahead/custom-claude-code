@@ -15,12 +15,12 @@ function Write-ColorOutput($ForegroundColor) {
 
 function Write-Step {
     param([string]$message)
-    Write-ColorOutput Cyan "➤ $message"
+    Write-ColorOutput Cyan "> $message"
 }
 
 function Write-Success {
     param([string]$message)
-    Write-ColorOutput Green "✓ $message"
+    Write-ColorOutput Green "+ $message"
 }
 
 function Write-Info {
@@ -30,12 +30,12 @@ function Write-Info {
 
 # Header
 Write-Output ""
-Write-ColorOutput Cyan "╔══════════════════════════════════════════════════════════════╗"
-Write-ColorOutput Cyan "║                                                              ║"
-Write-ColorOutput Cyan "║   🚀 Free Claude Code - One-Line Installer                  ║"
-Write-ColorOutput Cyan "║   Use Claude Code with ANY API - Save up to 80%!            ║"
-Write-ColorOutput Cyan "║                                                              ║"
-Write-ColorOutput Cyan "╚══════════════════════════════════════════════════════════════╝"
+Write-ColorOutput Cyan "=============================================================="
+Write-ColorOutput Cyan "|                                                            |"
+Write-ColorOutput Cyan "|   Free Claude Code - One-Line Installer                    |"
+Write-ColorOutput Cyan "|   Use Claude Code with ANY API - Save up to 80%!           |"
+Write-ColorOutput Cyan "|                                                            |"
+Write-ColorOutput Cyan "=============================================================="
 Write-Output ""
 
 # Check Node.js
@@ -44,13 +44,13 @@ try {
     $nodeVersion = node -v
     $versionNum = $nodeVersion -replace 'v', '' -split '\.' | Select-Object -First 1
     if ([int]$versionNum -lt 20) {
-        Write-ColorOutput Red "✗ Node.js 20+ is required. You have $nodeVersion"
+        Write-ColorOutput Red "X Node.js 20+ is required. You have $nodeVersion"
         Write-Output "Please upgrade from: https://nodejs.org/"
         exit 1
     }
     Write-Success "Node.js $nodeVersion detected"
 } catch {
-    Write-ColorOutput Red "✗ Node.js is not installed!"
+    Write-ColorOutput Red "X Node.js is not installed!"
     Write-Output "Please install Node.js 20+ from: https://nodejs.org/"
     exit 1
 }
@@ -59,10 +59,15 @@ Write-Output ""
 # Step 1: Install Claude Code v2.0.64
 Write-Step "Step 1/3: Installing Claude Code v2.0.64..."
 try {
+    $prevErrorAction = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
     npm install -g @anthropic-ai/claude-code@2.0.64 2>&1 | Out-Null
+    $global:npmExitCode = $LASTEXITCODE
+    $ErrorActionPreference = $prevErrorAction
+    if ($global:npmExitCode -ne 0) { throw "npm install failed" }
     Write-Success "Claude Code v2.0.64 installed"
 } catch {
-    Write-ColorOutput Red "✗ Failed to install Claude Code"
+    Write-ColorOutput Red "X Failed to install Claude Code"
     Write-Output $_.Exception.Message
     exit 1
 }
@@ -71,10 +76,15 @@ Write-Output ""
 # Step 2: Install Free Claude Code
 Write-Step "Step 2/3: Installing Free Claude Code..."
 try {
+    $prevErrorAction = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
     npm install -g @keepuahead/free-claude-code 2>&1 | Out-Null
+    $global:npmExitCode = $LASTEXITCODE
+    $ErrorActionPreference = $prevErrorAction
+    if ($global:npmExitCode -ne 0) { throw "npm install failed" }
     Write-Success "Free Claude Code installed"
 } catch {
-    Write-ColorOutput Red "✗ Failed to install Free Claude Code"
+    Write-ColorOutput Red "X Failed to install Free Claude Code"
     Write-Output $_.Exception.Message
     exit 1
 }
@@ -109,11 +119,11 @@ if (-not (Test-Path $configFile)) {
 Write-Output ""
 
 # Done!
-Write-ColorOutput Green "╔══════════════════════════════════════════════════════════════╗"
-Write-ColorOutput Green "║                                                              ║"
-Write-ColorOutput Green "║   ✅ INSTALLATION COMPLETE!                                  ║"
-Write-ColorOutput Green "║                                                              ║"
-Write-ColorOutput Green "╚══════════════════════════════════════════════════════════════╝"
+Write-ColorOutput Green "=============================================================="
+Write-ColorOutput Green "|                                                            |"
+Write-ColorOutput Green "|   INSTALLATION COMPLETE!                                   |"
+Write-ColorOutput Green "|                                                            |"
+Write-ColorOutput Green "=============================================================="
 Write-Output ""
 
 Write-ColorOutput Cyan "Next Steps:"

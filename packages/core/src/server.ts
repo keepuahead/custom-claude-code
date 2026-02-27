@@ -220,6 +220,16 @@ class Server {
           if (url.pathname.endsWith("/v1/messages") && req.body) {
             try {
               const body = req.body as any;
+              
+              // If model is missing, try to get it from the router default config
+              if (!body.model) {
+                const configService = (req.server as any).configService || this.configService;
+                const routerConfig = configService?.get("Router");
+                if (routerConfig?.default) {
+                  body.model = routerConfig.default;
+                }
+              }
+              
               if (!body || !body.model) {
                 return reply
                   .code(400)

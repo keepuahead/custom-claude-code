@@ -12,13 +12,19 @@
 ### Windows (PowerShell) - Run as Administrator
 
 ```powershell
-npm install -g @anthropic-ai/claude-code@2.0.64 && npm install -g github:keepuahead/custom-claude-code && fcc start
+irm https://raw.githubusercontent.com/keepuahead/custom-claude-code/main/install.ps1 | iex
 ```
 
 ### Mac/Linux
 
 ```bash
-npm install -g @anthropic-ai/claude-code@2.0.64 && npm install -g github:keepuahead/custom-claude-code && fcc start
+curl -fsSL https://raw.githubusercontent.com/keepuahead/custom-claude-code/main/install.sh | bash
+```
+
+### Install with NPM (Alternative)
+
+```bash
+npm install -g @anthropic-ai/claude-code@2.0.64 && npm install -g @keepuahead/free-claude-code && fcc start
 ```
 
 ### Or Install from Source
