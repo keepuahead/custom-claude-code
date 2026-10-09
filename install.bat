@@ -52,7 +52,7 @@ echo [3/3] Setting up configuration...
 if not exist "%CONFIG_DIR%" mkdir "%CONFIG_DIR%"
 
 if not exist "%CONFIG_FILE%" (
-    echo {"Providers":[{"name":"freeaiapikey","api_base_url":"https://freeaiapikey.com/v1/chat/completions","api_key":"YOUR_API_KEY_HERE","models":["gpt-5","claude-sonnet-4.5"]}],"Router":{"default":"freeaiapikey,gpt-5"}} > "%CONFIG_FILE%"
+    echo {"Providers":[{"name":"freeaiapikey","api_base_url":"https://api.freeaiapikey.com/v1/chat/completions","api_key":"YOUR_API_KEY_HERE","models":["gpt-5","claude-sonnet-4.5"]}],"Router":{"default":"freeaiapikey,gpt-5"}} > "%CONFIG_FILE%"
     echo [OK] Config template created
 ) else (
     echo [OK] Config already exists
