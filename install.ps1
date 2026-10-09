@@ -102,7 +102,7 @@ if (-not (Test-Path $configFile)) {
 {
   "Providers": [{
     "name": "freeaiapikey",
-    "api_base_url": "https://freeaiapikey.com/v1/chat/completions",
+    "api_base_url": "https://api.freeaiapikey.com/v1/chat/completions",
     "api_key": "YOUR_API_KEY_HERE",
     "models": ["gpt-5", "claude-sonnet-4.5", "gemini-3", "deepseek-chat"]
   }],
