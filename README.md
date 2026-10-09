@@ -55,7 +55,7 @@ Create `~/.free-claude-code/config.json`:
 {
   "Providers": [{
     "name": "myapi",
-    "api_base_url": "https://freeaiapikey.com/v1/chat/completions",
+    "api_base_url": "https://api.freeaiapikey.com/v1/chat/completions",
     "api_key": "YOUR_API_KEY",
     "models": ["gpt-5", "claude-sonnet-4.5"]
   }],
@@ -81,7 +81,7 @@ fcc code
 {
   "Providers": [{
     "name": "freeaiapikey",
-    "api_base_url": "https://freeaiapikey.com/v1/chat/completions",
+    "api_base_url": "https://api.freeaiapikey.com/v1/chat/completions",
     "api_key": "YOUR_KEY",
     "models": ["gpt-5", "claude-sonnet-4.5", "gemini-3", "deepseek-chat"]
   }],
